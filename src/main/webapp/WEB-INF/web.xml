@@ -12,7 +12,14 @@
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/user</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>TeamServlet</servlet-name>
+        <servlet-class>controller.TeamServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeamServlet</servlet-name>
+        <url-pattern>/getTeams</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ScoreServlet</servlet-name>
         <servlet-class>controller.ScoreServlet</servlet-class>

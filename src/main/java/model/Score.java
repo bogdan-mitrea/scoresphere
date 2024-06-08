@@ -1,12 +1,20 @@
 package model;
 
 public class Score {
+    private int idScore;
     private String homeTeam;
     private String awayTeam;
     private int homeScore;
     private int awayScore;
 
     // Getters and setters
+    public int getIdScore() {
+        return idScore;
+    }
+
+    public void setIdScore(int idScore) {
+        this.idScore = idScore;
+    }
 
     public String getHomeTeam() {
         return homeTeam;

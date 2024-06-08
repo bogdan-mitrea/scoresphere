@@ -1,12 +1,29 @@
 package model;
 
 public class User {
+    private int idUser;
     private String username;
     private String password;
     private String email;
     private String favoriteTeam;
 
-    // Getters and setters
+    public User() {}
+
+    public User(String username, String password, String email, String favoriteTeam) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.favoriteTeam = favoriteTeam;
+    }
+
+    // Getters and Setters
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
     public String getUsername() {
         return username;
