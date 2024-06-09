@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/getTeams")
+
 public class TeamServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

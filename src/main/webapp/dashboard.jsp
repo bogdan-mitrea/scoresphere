@@ -5,10 +5,11 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ScoreSphere</title>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -24,7 +25,7 @@
                             var dropdown = $("#teamDropdown");
                             dropdown.empty();
                             for (var i = 0; i < response.length; i++) {
-                                dropdown.append('<option value="' + response[i] + '">' + response[i] + '</option>');
+                                dropdown.append('<li>' + response[i] + '</li>');
                             }
                             dropdown.show();
                         }
@@ -34,71 +35,44 @@
                 }
             });
 
-            $("#teamDropdown").on('change', function(){
-                $("#favoriteTeam").val(this.value);
-                $(this).hide();
+            $("#teamDropdown").on('click', 'li', function(){
+                $("#favoriteTeam").val($(this).text());
+                $("#teamDropdown").hide();
             });
         });
     </script>
 </head>
 <body>
-<div class="container">
-    <h1>Live Football Matches</h1>
-    <%
-        String loggedInUser = (String) session.getAttribute("loggedInUser");
-        List<Map<String, String>> matches = FootballMatchDAO.getFootballMatchesFromDatabase();
-        if (loggedInUser == null) {
+<main>
+    <div class="container">
+        <div class="matches">
+        <h2>Live Football Matches</h2>
+        <%
+            List<Map<String, String>> matches = FootballMatchDAO.getFootballMatchesFromDatabase();
             if (matches != null && !matches.isEmpty()) {
                 for (Map<String, String> match : matches) {
                     String homeTeam = match.get("homeTeam");
                     String awayTeam = match.get("awayTeam");
                     String homeScore = match.get("homeScore");
                     String awayScore = match.get("awayScore");
-                    %>
-                    <div class="match-card">
-        <h2><%= homeTeam %> vs <%= awayTeam %></h2>
-    <p class="score"><%= homeScore %> - <%= awayScore %></p>
-</div>
-<%
-    }
-        }   else {
-%>
-    <p>No matches available.</p>
-    <%
-        }
-    %>
-    <p>You are a guest.</p>
-    <div class="logout">
-        <a href="login.jsp">Login</a>
-    </div>
-    <%
-        }   else {
-            if (matches != null && !matches.isEmpty()) {
-                for (Map<String, String> match : matches) {
-                    String homeTeam = match.get("homeTeam");
-                    String awayTeam = match.get("awayTeam");
-                    String homeScore = match.get("homeScore");
-                    String awayScore = match.get("awayScore");
-    %>
-    <div class="match-card">
-        <h2><%= homeTeam %> vs <%= awayTeam %></h2>
-        <p class="score"><%= homeScore %> - <%= awayScore %></p>
-    </div>
-    <%
-        }
-    } else {
-    %>
-    <p>No matches available.</p>
-    <%
+        %>
+        <div class="match-card">
+            <h3><%= homeTeam %> vs <%= awayTeam %></h3>
+            <p class="score"><%= homeScore %> - <%= awayScore %></p>
+        </div>
+        <%
             }
-            %>
-            <div class="logout">
-        <a href="login.jsp">Logout</a>
+        } else {
+        %>
+        <p>No matches available.</p>
+        <%
+            }
+        %>
+        </div>
     </div>
-    <%
-        }
-    %>
-
-</div>
+</main>
+<footer>
+    Mitrea Bogdan, Eftimie Albert - 432D
+</footer>
 </body>
 </html>

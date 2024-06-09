@@ -27,7 +27,7 @@ public class UserService {
 
     public User loginUser(String username, String password) {
         try (Connection connection = DatabaseConnection.initializeDatabase()) {
-            String query = "SELECT * FROM users WHERE Username = ? AND Password = ?";
+            String query = "SELECT * FROM users WHERE username = ? AND password = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, username);
             statement.setString(2, password);

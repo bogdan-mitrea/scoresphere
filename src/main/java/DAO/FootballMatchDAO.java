@@ -15,7 +15,7 @@ public class FootballMatchDAO {
         List<Map<String, String>> matches = new ArrayList<>();
         try (Connection conn = DatabaseConnection.initializeDatabase();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT homeTeam, awayTeam, homeScore, awayScore FROM scores")) {
+             ResultSet rs = stmt.executeQuery("SELECT homeTeam, awayTeam, homeScore, awayScore, matchDate, matchTime, isLive FROM scores")) {
             while (rs.next()) {
                 Map<String, String> match = new HashMap<>();
                 match.put("homeTeam", rs.getString("homeTeam"));

@@ -16,7 +16,6 @@ public class User {
         this.favoriteTeam = favoriteTeam;
     }
 
-    // Getters and Setters
     public int getIdUser() {
         return idUser;
     }
