@@ -21,6 +21,30 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+body, .m-container, .dashboard-container, .matches {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit; /* Include padding and border in element's width and height */
+}
+
+
 header h1 {
     margin: 0;
     font-size: 2.5em;
@@ -45,12 +69,106 @@ nav a:hover {
 
 main {
     width: 100%;
-    max-width: 1200px;
+    margin-left: 20px;
     padding: 20px;
+
 }
 
 .index-container {
     width: 100%;
+}
+
+.m-container {
+    background-color: #ffffff;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    align-items: flex-start;
+}
+
+.dashboard-container {
+    background-color: #ffffff;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.match-separator {
+    border: 0;
+    height: 1px;
+    background: #cccccc;
+    margin: 5px 0;
+}
+
+.standings-and-scores {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.standings {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.scores {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.standings-table, .scores-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    max-width: 800px;
+}
+
+.standings-table th, .standings-table td, .scores-table th, .scores-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.standings-table th, .scores-table th {
+    background-color: #f2f2f2;
+}
+
+.standings-table .top-four {
+    background-color: rgba(173, 216, 230, 0.5); /* Pale blue transparent */
+}
+
+.standings-table .fifth-sixth {
+    background-color: rgba(139, 0, 0, 0.5); /* Dark red transparent */
+}
+
+.standings-table .seventh {
+    background-color: rgba(218, 165, 32, 0.5); /* Dark yellow transparent */
+}
+
+.standings-table .bottom-three {
+    background-color: rgba(255, 0, 0, 0.5); /* Red transparent */
+}
+
+.standings-container {
+    max-width: 400px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #333333;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 section {
@@ -75,26 +193,30 @@ section:hover {
     width: 80%;
     max-width: 800px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .match-card {
     background-color: #f9f9f9;
     border-radius: 5px;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 4px;
+    text-align: center;
 }
 
 .match-card h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 18px;
+    margin-bottom: 8px;
     color: #ff6600;
 }
 .match-card h3 {
     margin: 5px 0;
+    font-size: 16px;
 }
 .match-card p {
     font-weight: bold;
     margin: 5px 0;
+    color: grey;
 }
 
 .match-card .score {
@@ -176,7 +298,6 @@ footer {
     }
 }
 
-/* Added styles for login form */
 .login-container {
     text-align: center;
     padding: 20px;
@@ -185,7 +306,7 @@ footer {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
     width: 80%;
     max-width: 400px;
-    margin: auto; /* Center horizontally */
+    margin: auto;
 }
 
 .login-container h1 {
@@ -312,6 +433,8 @@ footer {
     padding: 8px;
     border: none;
     border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
 }
 
 .search-bar button {
@@ -326,4 +449,165 @@ footer {
 
 .search-bar button:hover {
     background-color: #cc5200;
+}
+
+.live-indicator {
+    color: transparent;
+    text-shadow: 0 0 0 red;
+    font-size: 1.2em;
+}
+
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.standings-table th, .standings-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.standings-table th {
+    background-color: #f2f2f2;
+}
+
+.standings-table .top-four {
+    background-color: rgba(173, 216, 230, 0.5); /* Pale blue transparent */
+}
+
+.standings-table .fifth-sixth {
+    background-color: rgba(139, 0, 0, 0.5); /* Dark red transparent */
+}
+
+.standings-table .seventh {
+    background-color: rgba(218, 165, 32, 0.5); /* Dark yellow transparent */
+}
+
+.standings-table .bottom-three {
+    background-color: rgba(255, 0, 0, 0.5); /* Red transparent */
+}
+
+.group-standings {
+    margin-bottom: 40px;
+
+}
+
+.logout-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    width: 80%;
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.logout-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #cc5200;
+}
+
+.profile-container, .change-password-container, .change-password-result {
+    text-align: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    width: 80%;
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.profile-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.profile-table td {
+    padding: 10px;
+    border: 1px solid #dddddd;
+}
+
+.change-password-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.change-password-container form label {
+    margin-top: 10px;
+}
+
+.change-password-container form input {
+    margin-top: 5px;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.change-password-container form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.change-password-container form button:hover {
+    background-color: #cc5200;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.back-button:hover {
+    background-color: #cc5200;
+}
+
+.match-day {
+    margin-bottom: 10px;
+}
+
+.match-day h4 {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.match-time {
+    color: grey;
 }

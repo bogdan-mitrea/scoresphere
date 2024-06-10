@@ -22,11 +22,13 @@ public class FootballMatchDAO {
                 match.put("awayTeam", rs.getString("awayTeam"));
                 match.put("homeScore", rs.getString("homeScore"));
                 match.put("awayScore", rs.getString("awayScore"));
+                match.put("matchDate", rs.getString("matchDate"));
+                match.put("matchTime", rs.getString("matchTime"));
+                match.put("isLive", rs.getString("isLive"));
                 matches.add(match);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle exceptions appropriately, e.g., log the error, return an empty list, etc.
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
