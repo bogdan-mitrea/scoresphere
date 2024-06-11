@@ -20,15 +20,15 @@
         <h2>Welcome to ScoreSphere</h2>
         <p>Your one-stop destination for all football scores and updates.</p>
     </section>
-    <section class="match-card">
+    <section class="index-card">
         <h2>Login</h2>
         <a href="login.jsp">Access your account</a>
     </section>
-    <section class="match-card">
+    <section class="index-card">
         <h2>Register</h2>
         <a href="register.jsp">Create a new account</a>
     </section>
-    <section class="match-card">
+    <section class="index-card">
         <h2>Continue as Guest</h2>
         <a href="dashboard.jsp">Browse without logging in</a>
     </section>

@@ -33,7 +33,7 @@ body, .m-container, .dashboard-container, .matches {
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
     width: 100%;
     box-sizing: border-box;
 }
@@ -41,7 +41,7 @@ html, body {
 *,
 *:before,
 *:after {
-    box-sizing: inherit; /* Include padding and border in element's width and height */
+    box-sizing: inherit;
 }
 
 
@@ -102,13 +102,6 @@ main {
     align-items: center;
 }
 
-.match-separator {
-    border: 0;
-    height: 1px;
-    background: #cccccc;
-    margin: 5px 0;
-}
-
 .standings-and-scores {
     display: flex;
     justify-content: space-between;
@@ -130,33 +123,6 @@ main {
     border-collapse: collapse;
     margin: 20px 0;
     max-width: 800px;
-}
-
-.standings-table th, .standings-table td, .scores-table th, .scores-table td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 5px;
-    font-size: 14px;
-}
-
-.standings-table th, .scores-table th {
-    background-color: #f2f2f2;
-}
-
-.standings-table .top-four {
-    background-color: rgba(173, 216, 230, 0.5); /* Pale blue transparent */
-}
-
-.standings-table .fifth-sixth {
-    background-color: rgba(139, 0, 0, 0.5); /* Dark red transparent */
-}
-
-.standings-table .seventh {
-    background-color: rgba(218, 165, 32, 0.5); /* Dark yellow transparent */
-}
-
-.standings-table .bottom-three {
-    background-color: rgba(255, 0, 0, 0.5); /* Red transparent */
 }
 
 .standings-container {
@@ -196,23 +162,12 @@ section:hover {
     text-align: center;
 }
 
-.match-card {
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 4px;
-    text-align: center;
-}
-
 .match-card h2 {
     font-size: 18px;
     margin-bottom: 8px;
     color: #ff6600;
 }
-.match-card h3 {
-    margin: 5px 0;
-    font-size: 16px;
-}
+
 .match-card p {
     font-weight: bold;
     margin: 5px 0;
@@ -451,18 +406,6 @@ footer {
     background-color: #cc5200;
 }
 
-.live-indicator {
-    color: transparent;
-    text-shadow: 0 0 0 red;
-    font-size: 1.2em;
-}
-
-.standings-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
 .standings-table th, .standings-table td {
     border: 1px solid #dddddd;
     text-align: left;
@@ -475,19 +418,19 @@ footer {
 }
 
 .standings-table .top-four {
-    background-color: rgba(173, 216, 230, 0.5); /* Pale blue transparent */
+    background-color: rgba(173, 216, 230, 0.5);
 }
 
 .standings-table .fifth-sixth {
-    background-color: rgba(139, 0, 0, 0.5); /* Dark red transparent */
+    background-color: rgba(139, 0, 0, 0.5);
 }
 
 .standings-table .seventh {
-    background-color: rgba(218, 165, 32, 0.5); /* Dark yellow transparent */
+    background-color: rgba(218, 165, 32, 0.5);
 }
 
 .standings-table .bottom-three {
-    background-color: rgba(255, 0, 0, 0.5); /* Red transparent */
+    background-color: rgba(255, 0, 0, 0.5);
 }
 
 .group-standings {
@@ -598,16 +541,94 @@ footer {
     background-color: #cc5200;
 }
 
+.match-section {
+    margin-bottom: 20px;
+}
+
 .match-day {
     margin-bottom: 10px;
 }
 
 .match-day h4 {
-    margin: 5px 0;
+    margin: 10px 0;
     font-size: 16px;
     color: #333;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.match-card {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.match-card h3 {
+    margin: 0;
+    font-size: 16px;
+    flex: 1;
+}
+
+.match-card .team-name {
+    margin: 0 5px;
 }
 
 .match-time {
     color: grey;
+    font-size: 14px;
+    flex: 0 0 auto;
+    margin-left: 10px;
+}
+
+.match-separator {
+    border: 0;
+    height: 1px;
+    background: #cccccc;
+    margin: 10px 0;
+}
+
+.live-indicator {
+    color: red;
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+.match-card:hover{
+    transition: background-color 0.3s;
+    background-color: #eae5e2;
+}
+
+.index-card {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 4px;
+    text-align: center;
+}
+
+.index-card h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #ff6600;
+}
+.index-card h3 {
+    margin: 5px 0;
+    font-size: 16px;
+}
+.index-card p {
+    font-weight: bold;
+    margin: 5px 0;
+    color: grey;
+}
+
+.index-card {
+    font-weight: bold;
+    margin: 5px 0;
 }

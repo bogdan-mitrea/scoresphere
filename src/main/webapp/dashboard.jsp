@@ -71,11 +71,10 @@
 </head>
 <body>
 <main>
-    <p> </p>
     <div class="dashboard-container">
         <div class="matches">
-            <h3>Live Matches</h3>
-            <%
+            <h2>Live Football Matches</h2>
+                <%
                 Connection connection = null;
                 Statement stmt = null;
                 ResultSet rs = null;
@@ -119,11 +118,10 @@
                     // Display Live Matches
                     if (liveMatches.isEmpty()) {
                         out.println("<p>No live matches available.</p>");
-                        out.println("<hr class='match-separator'>");
-                        out.println("<hr class='match-separator'>");
                     } else {
             %>
-            <div class="match-day">
+            <div class="match-section">
+                <h3>Live Matches</h3>
                 <%
                     Map<String, List<Map<String, Object>>> matchesByDate = new LinkedHashMap<>();
                     for (Map<String, Object> match : liveMatches) {
@@ -158,27 +156,26 @@
                                 out.println("<span class='live-indicator'>•</span>");
                             }
                             out.println("</h3>");
-                            out.println("<p class='match-time'>" + matchTime + "</p>");
+                            String[] timeParts = matchTime.split(":");
+                            String formattedTime = timeParts[0] + ":" + timeParts[1];
+                            out.println("<p class='match-time'>" + formattedTime + "</p>");
                             out.println("</div>");
                             out.println("<hr class='match-separator'>");
                         }
                         out.println("</div>");
                     }
-                    out.println("<hr class='match-separator'>");
                 %>
             </div>
-            <%
+                <%
                 }
 
                 // Display Past Matches
                 out.println("<h3>Past Matches</h3>");
                 if (pastMatches.isEmpty()) {
                     out.println("<p>No past matches available.</p>");
-                    out.println("<hr class='match-separator'>");
-                    out.println("<hr class='match-separator'>");
                 } else {
             %>
-            <div class="match-day">
+            <div class="match-section">
                 <%
                     Map<String, List<Map<String, Object>>> matchesByDate = new LinkedHashMap<>();
                     for (Map<String, Object> match : pastMatches) {
@@ -208,64 +205,64 @@
 
                             out.println("<div class='match-card'>");
                             out.println("<h3><span class='team-name'>" + homeTeam + "</span> " + homeScore + " - " + awayScore + " <span class='team-name'>" + awayTeam + "</span></h3>");
-                            out.println("<p class='match-time'>" + matchTime + "</p>");
+                            String[] timeParts = matchTime.split(":");
+                            String formattedTime = timeParts[0] + ":" + timeParts[1];
+                            out.println("<p class='match-time'>" + formattedTime + "</p>");
                             out.println("</div>");
                             out.println("<hr class='match-separator'>");
                         }
                         out.println("</div>");
                     }
-                    out.println("<hr class='match-separator'>");
                 %>
             </div>
-            <%
+                <%
                 }
 
                 // Display Upcoming Matches
                 out.println("<h3>Upcoming Matches</h3>");
                 if (upcomingMatches.isEmpty()) {
                     out.println("<p>No upcoming matches available.</p>");
-                    out.println("<hr class='match-separator'>");
-                    out.println("<hr class='match-separator'>");
                 } else {
             %>
-            <div class="match-day">
-                <%
-                    Map<String, List<Map<String, Object>>> matchesByDate = new LinkedHashMap<>();
-                    for (Map<String, Object> match : upcomingMatches) {
-                        String matchDate = (String) match.get("matchDate");
-                        matchesByDate.putIfAbsent(matchDate, new ArrayList<>());
-                        matchesByDate.get(matchDate).add(match);
-                    }
+            <div class="match-section">
+<%
+                Map<String, List<Map<String, Object>>> matchesByDate = new LinkedHashMap<>();
+                for (Map<String, Object> match : upcomingMatches) {
+                    String matchDate = (String) match.get("matchDate");
+                    matchesByDate.putIfAbsent(matchDate, new ArrayList<>());
+                    matchesByDate.get(matchDate).add(match);
+                }
 
-                    for (Map.Entry<String, List<Map<String, Object>>> entry : matchesByDate.entrySet()) {
-                        String matchDate = entry.getKey();
-                        List<Map<String, Object>> dailyMatches = entry.getValue();
-                        String[] dateParts = matchDate.split("-");
-                        String formattedDate = dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
+                for (Map.Entry<String, List<Map<String, Object>>> entry : matchesByDate.entrySet()) {
+                    String matchDate = entry.getKey();
+                    List<Map<String, Object>> dailyMatches = entry.getValue();
+                    String[] dateParts = matchDate.split("-");
+                    String formattedDate = dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
 
-                        out.println("<div class='match-day'>");
-                        out.println("<h4>" + formattedDate + "</h4>");
+                    out.println("<div class='match-day'>");
+                    out.println("<h4>" + formattedDate + "</h4>");
 
-                        for (Map<String, Object> match : dailyMatches) {
-                            String homeTeam = (String) match.get("homeTeam");
-                            String awayTeam = (String) match.get("awayTeam");
-                            String homeScore = (String) match.get("homeScore");
-                            String awayScore = (String) match.get("awayScore");
-                            String matchTime = (String) match.get("matchTime");
+                    for (Map<String, Object> match : dailyMatches) {
+                        String homeTeam = (String) match.get("homeTeam");
+                        String awayTeam = (String) match.get("awayTeam");
+                        String homeScore = (String) match.get("homeScore");
+                        String awayScore = (String) match.get("awayScore");
+                        String matchTime = (String) match.get("matchTime");
 
-                            homeScore = (homeScore != null) ? homeScore : "";
-                            awayScore = (awayScore != null) ? awayScore : "";
+                        homeScore = (homeScore != null) ? homeScore : "";
+                        awayScore = (awayScore != null) ? awayScore : "";
 
-                            out.println("<div class='match-card'>");
-                            out.println("<h3><span class='team-name'>" + homeTeam + "</span> " + homeScore + " - " + awayScore + " <span class='team-name'>" + awayTeam + "</span></h3>");
-                            out.println("<p class='match-time'>" + matchTime + "</p>");
-                            out.println("</div>");
-                            out.println("<hr class='match-separator'>");
-                        }
+                        out.println("<div class='match-card'>");
+                        out.println("<h3><span class='team-name'>" + homeTeam + "</span> " + homeScore + " - " + awayScore + " <span class='team-name'>" + awayTeam + "</span></h3>");
+                        String[] timeParts = matchTime.split(":");
+                        String formattedTime = timeParts[0] + ":" + timeParts[1];
+                        out.println("<p class='match-time'>" + formattedTime + "</p>");
                         out.println("</div>");
+                        out.println("<hr class='match-separator'>");
                     }
-                    out.println("<hr class='match-separator'>");
-                %>
+                    out.println("</div>");
+                }
+%>
             </div>
             <%
                     }

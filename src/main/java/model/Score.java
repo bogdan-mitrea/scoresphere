@@ -13,7 +13,6 @@ public class Score {
     private LocalTime matchTime;
     private boolean isLive;
 
-    // Getters and setters
     public int getIdScore() {
         return idScore;
     }

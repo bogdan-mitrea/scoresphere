@@ -17,7 +17,7 @@
             text-align: center;
             background-color: #ff6600;
             width: 100%;
-            padding: 10px 0; /* Reduced padding */
+            padding: 10px 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         main {
@@ -25,7 +25,7 @@
         }
         header h1 {
             margin: 0;
-            font-size: 2em; /* Reduced font size */
+            font-size: 2em;
             color: #ffffff;
         }
     </style>
@@ -187,7 +187,9 @@
                                     out.println("<span class='live-indicator'>•</span>");
                                 }
                                 out.println("</h3>");
-                                out.println("<p class='match-time'>" + matchTime + "</p>");
+                                String[] timeParts = matchTime.split(":");
+                                String formattedTime = timeParts[0] + ":" + timeParts[1];
+                                out.println("<p class='match-time'>" + formattedTime + "</p>");
                                 out.println("</div>");
                                 out.println("<hr class='match-separator'>");
                             }
@@ -239,7 +241,9 @@
 
                                 out.println("<div class='match-card'>");
                                 out.println("<h3><span class='team-name'>" + homeTeam + "</span> " + homeScore + " - " + awayScore + " <span class='team-name'>" + awayTeam + "</span></h3>");
-                                out.println("<p class='match-time'>" + matchTime + "</p>");
+                                String[] timeParts = matchTime.split(":");
+                                String formattedTime = timeParts[0] + ":" + timeParts[1];
+                                out.println("<p class='match-time'>" + formattedTime + "</p>");
                                 out.println("</div>");
                                 out.println("<hr class='match-separator'>");
                             }
@@ -291,7 +295,9 @@
 
                                 out.println("<div class='match-card'>");
                                 out.println("<h3><span class='team-name'>" + homeTeam + "</span> " + homeScore + " - " + awayScore + " <span class='team-name'>" + awayTeam + "</span></h3>");
-                                out.println("<p class='match-time'>" + matchTime + "</p>");
+                                String[] timeParts = matchTime.split(":");
+                                String formattedTime = timeParts[0] + ":" + timeParts[1];
+                                out.println("<p class='match-time'>" + formattedTime + "</p>");
                                 out.println("</div>");
                                 out.println("<hr class='match-separator'>");
                             }
